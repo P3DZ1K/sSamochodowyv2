@@ -203,13 +203,13 @@ mysqli_close($polaczenie);
     <div id="formContainer">
         <span id="closeButton">X</span>
         <h4>Edycja klienta</h4>
-<form method="POST" action="updateklient.php" id="formUpdateKlient">
-<input hidden value="<?php echo $wiersz['id']; ?>" type="text" name="f_id" autocomplete="off">
-Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off">
-Nazwisko: <input value="<?php echo $wiersz['nazwisko_klienta']; ?>" type="text" name="f_nazwizsko" autocomplete="off">
-<br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>"type="text" name="f_adres" autocomplete="off">
-<br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>"type="text" name="f_telefon" autocomplete="off">
-<br>Email: <input value="<?php echo $wiersz['email_klienta']; ?>"type="text" name="f_telefon" autocomplete="off">
+<form method="POST" action="groupdateklient.php" id="formUpdateKlient">
+<input hidden value="<?php echo $wiersz['id']; ?>" type="text" name="f_id" >
+Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" >
+Nazwisko: <input value="<?php echo $wiersz['nazwisko_klienta']; ?>" type="text" name="f_nazwizsko">
+<br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>"type="text" name="f_adres" >
+<br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>"type="text" name="f_telefon" >
+<br>Email: <input value="<?php echo $wiersz['email_klienta']; ?>"type="text" name="f_telefon" >
 <br><button type="submit" id="add"> ZAPISZ ZMIANY </button>
 </form>
         
@@ -222,6 +222,27 @@ Nazwisko: <input value="<?php echo $wiersz['nazwisko_klienta']; ?>" type="text" 
     document.getElementById("closeButton").addEventListener("click", function() {
         document.getElementById("formOverlay").style.display = "none"; // Ukrycie formularza
     });
+</script>
+
+<script>
+$(document).ready(function() {
+  $("#formUpdateKlient").submit(function () {
+
+        $.ajax({
+          url: "goupdateklient.php",
+          type: "POST",
+          data: $("#formUpdateKlient").serialize(),
+          cache: false,
+          success: function (response) { 
+         
+           $("#strona").load("showklienci.php");
+          }
+        });
+return false;
+});   
+   
+    
+}); 
 </script>
 
 </div>

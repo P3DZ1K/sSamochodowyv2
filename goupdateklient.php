@@ -10,7 +10,7 @@
     include 'connect.php';
     $baza = mysqli_connect($host,$db_user,$db_password,$db_name) or ('cos nie tak z polaczenie z BD');
 
-    $zapytanie="UPDATE `klienci` SET `nazwa_klienta` = '$f_nazwa', `adres` = '$f_adres', `telefon` = '$f_telefon' WHERE `klienci`.`id` = $f_id;";
+    $zapytanie="UPDATE `klienci` SET `nazwa_klienta` = '$f_imie', `adres_klienta` = '$f_nazwisko', `miasto_klienta` = '$f_miasto', `telefon_klienta` = '$f_telefon', `email_klienta` = '$f_email' WHERE `klienci`.`id` = $f_id;";
     $result = $baza->query($zapytanie) or die ('bledne zapytanie');
 
 

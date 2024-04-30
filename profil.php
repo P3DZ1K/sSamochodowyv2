@@ -199,20 +199,37 @@ mysqli_close($polaczenie);
 </div>
 <!--<img src="./images/pencil.png" id="showFormButton"> -->
 
+
+
+        <?php
+$prof = $_SESSION['imie_klienta'];
+
+include 'connect.php';
+$baza = mysqli_connect($host, $db_user, $db_password, $db_name) or ('cos nie tak z polaczenie z BD');
+
+$zapytanie="SELECT imie_klienta, nazwisko_klienta, miasto_klienta, telefon_klienta, email_klienta FROM klienci WHERE `imie_klienta`= '$prof'";
+$result = $baza->query($zapytanie) or die ('bledne zapytanie');
+
+while($wiersz = $result->fetch_assoc())
+{
+?>
 <div class="form-overlay" id="formOverlay">
     <div id="formContainer">
         <span id="closeButton">X</span>
         <h4>Edycja klienta</h4>
 <form method="POST" action="groupdateklient.php" id="formUpdateKlient">
-<input hidden value="<?php echo $wiersz['id']; ?>" type="text" name="f_id" >
-Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" >
-Nazwisko: <input value="<?php echo $wiersz['nazwisko_klienta']; ?>" type="text" name="f_nazwizsko">
-<br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>"type="text" name="f_adres" >
-<br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>"type="text" name="f_telefon" >
-<br>Email: <input value="<?php echo $wiersz['email_klienta']; ?>"type="text" name="f_telefon" >
+Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off">
+Nazwisko: <input value="<?php echo $wiersz['nazwisko_klienta']; ?>" type="text" name="f_nazwizsko" autocomplete="off">
+<br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>"type="text" name="f_adres" autocomplete="off">
+<br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>"type="text" name="f_telefon" autocomplete="off">
+<br>Email: <input value="<?php echo $wiersz['email_klienta']; ?>"type="text" name="f_telefon" autocomplete="off">
 <br><button type="submit" id="add"> ZAPISZ ZMIANY </button>
 </form>
-        
+<?php
+};
+
+$baza->close();
+?> 
         
         <script>
     document.getElementById("showFormButton").addEventListener("click", function() {
@@ -240,11 +257,6 @@ $(document).ready(function() {
         });
 return false;
 });   
-   
-    
-}); 
-</script>
-
 </div>
 </body>
 </html>

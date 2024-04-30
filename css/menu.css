@@ -1,0 +1,10 @@
+body{
+    background-image: url("../images/auto1.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    background-size: cover;  
+}
+div{
+    background-color: ffe5b4;
+}
+

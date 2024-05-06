@@ -21,7 +21,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
+      background-color: #89d2e1;
     }
 
     .container {
@@ -31,6 +31,8 @@
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      overflow-x: auto;
       
     }
 
@@ -64,7 +66,7 @@
     table th {
       background-color: #f4f4f4;
     }
-    @media (max-width: 1000px) {
+    @media (max-width: 1020px) {
       /* Dla urządzeń o szerokości do 600px */
       .container {
         padding: 10px;
@@ -73,15 +75,11 @@
         width: 100px;
         height: 100px;
       }
-      
-	    .rwd-table {
-		    overflow-x:scroll;
-	}	
   .table td, table th{
     font-size:10px;
   }
 }
-@media (max-width: 700px){
+@media (max-width: 720px){
   .table td, table th{
     font-size:7px;
   }
@@ -131,17 +129,68 @@
       justify-content: space-around;
       flex-direction: row-reverse;
     }
+    BUTTON{
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            background-color: #00a1e0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left:40px;
+            display: flex;
+            margin-left: 128px;
+
+    }
   </style>
 </head>
 <body>
 
 <div class="rwd-table">
- 
 <div class="container">
-  
-  <img class="profile-picture" src="placeholder.jpg" alt="Zdjęcie profilowe">
+<a href="menu.php" style="text-decoration: none;"><span>X</span></a>
+
+  <?php
+    require_once "connect.php";
+
+    // Nawiązanie połączenia z bazą danych
+    $polaczenie = mysqli_connect($host, $db_user, $db_password, $db_name);
+    
+    // Sprawdzenie połączenia
+    if (!$polaczenie) {
+        die("Błąd połączenia z bazą danych: " . mysqli_connect_error());
+    }
+    // Tutaj możesz wykonywać operacje na bazie danych
+   $prof = $_SESSION['imie_klienta'];
+   $sql ="SELECT `zdjecie_klienta` FROM `klienci` WHERE `imie_klienta` = '$prof'";
+
+   $wynik = mysqli_query($polaczenie, $sql);
+
+   // Sprawdzenie, czy zapytanie zostało wykonane poprawnie
+   if (!$wynik) {
+       die("Błąd zapytania SQL: " . mysqli_error($polaczenie));
+   }
+   
+   $idd=0;
+   // Przetwarzanie wyników zapytania
+   while ($_row = mysqli_fetch_assoc($wynik)) {
+    $zdjecie = $_row['zdjecie_klienta'];
+   }
+
+    if($zdjecie==1){echo '<img src="./images/awatar1.jfif" class="profile-picture" alt="Zdjęcie profilowe">';}
+    else if($zdjecie==2){echo '<img src="./images/awatar2.jfif" class="profile-picture" alt="Zdjęcie profilowe">';}
+    else{echo '<img src="./images/awatar3.jfif" class="profile-picture" alt="Zdjęcie profilowe">';}
+    
+
+    mysqli_close($polaczenie);
+  ?>
   <?php 
-  echo "<h1 style='color:red;text-align:center;'>Witaj ".$_SESSION['imie_klienta']."</h1>";
+  echo "<h1 style='color:red;text-align:center;font-size:auto;'>Witaj ".$_SESSION['imie_klienta']."</h1>";
   ?>
   <div class="jednosc">
 
@@ -207,7 +256,7 @@ $prof = $_SESSION['imie_klienta'];
 include 'connect.php';
 $baza = mysqli_connect($host, $db_user, $db_password, $db_name) or ('cos nie tak z polaczenie z BD');
 
-$zapytanie="SELECT imie_klienta, nazwisko_klienta, miasto_klienta, telefon_klienta, email_klienta FROM klienci WHERE `imie_klienta`= '$prof'";
+$zapytanie="SELECT imie_klienta, nazwisko_klienta, miasto_klienta, telefon_klienta, email_klienta, zdjecie_klienta FROM klienci WHERE `imie_klienta`= '$prof'";
 $result = $baza->query($zapytanie) or die ('bledne zapytanie');
 
 while($wiersz = $result->fetch_assoc())
@@ -217,13 +266,14 @@ while($wiersz = $result->fetch_assoc())
     <div id="formContainer">
         <span id="closeButton">X</span>
         <h4>Edycja klienta</h4>
-<form method="POST" action="groupdateklient.php" id="formUpdateKlient">
-Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off">
-Nazwisko: <input value="<?php echo $wiersz['nazwisko_klienta']; ?>" type="text" name="f_nazwizsko" autocomplete="off">
-<br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>"type="text" name="f_adres" autocomplete="off">
-<br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>"type="text" name="f_telefon" autocomplete="off">
-<br>Email: <input value="<?php echo $wiersz['email_klienta']; ?>"type="text" name="f_telefon" autocomplete="off">
-<br><button type="submit" id="add"> ZAPISZ ZMIANY </button>
+<form method="POST" action="groupDateKlient.php" id="Back">
+Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off" style="margin-left:80px;">
+<br><br>Nazwisko: <input value="<?php echo $wiersz['nazwisko_klienta']; ?>" type="text" name="f_nazwisko" autocomplete="off" style="margin-left:42px;">
+<br><br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>"type="text" name="f_miasto" autocomplete="off" style="margin-left:30px;">
+<br><br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>"type="text" name="f_telefon" autocomplete="off" style="margin-left:60px;">
+<br><br>Email: <input value="<?php echo $wiersz['email_klienta']; ?>"type="text" name="f_email" autocomplete="off" style="margin-left:72px;">
+<br><br>Awatar: <input value="<?php echo $wiersz['zdjecie_klienta']; ?>"type="number" min="1" max="3" name="f_zdjecie" autocomplete="off" style="margin-left:62px;width:163px; text-align: center;">
+<br><br><button type="submit" id="BUTTON"> ZAPISZ ZMIANY </button>
 </form>
 <?php
 };
@@ -241,22 +291,6 @@ $baza->close();
     });
 </script>
 
-<script>
-$(document).ready(function() {
-  $("#formUpdateKlient").submit(function () {
-
-        $.ajax({
-          url: "goupdateklient.php",
-          type: "POST",
-          data: $("#formUpdateKlient").serialize(),
-          cache: false,
-          success: function (response) { 
-         
-           $("#strona").load("showklienci.php");
-          }
-        });
-return false;
-});   
 </div>
 </body>
 </html>

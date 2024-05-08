@@ -175,7 +175,7 @@
    if (!$wynik) {
        die("Błąd zapytania SQL: " . mysqli_error($polaczenie));
    }
-   h
+   
    $idd=0;
    // Przetwarzanie wyników zapytania
    while ($_row = mysqli_fetch_assoc($wynik)) {

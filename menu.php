@@ -327,11 +327,10 @@ header .logo
 
 
     <ul>
-      <li><a href="#">Home</a></li>
+      <li><a href="menu.php">Home</a></li>
       <li><a href="profil.php">Profile</a></li>
-      <li><a href="#">Destination</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="shop.php">Shop</a></li>
+      <li><a href="contact.php">Contact</a></li>
       <li><?php
     echo '<a href="logout.php" style="text-decoration: none;">Wyloguj się!</a>';
     ?></li>

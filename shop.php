@@ -54,6 +54,18 @@
         .product-image:hover {
             transform: scale(1.05);
         }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease;
+        }
+        a:hover{
+            transform: scale(1.05);
+        }
+
+
+       
+
     </style>
 </head>
 <body>
@@ -72,39 +84,70 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const productGallery = document.getElementById('product-gallery');
+       document.addEventListener('DOMContentLoaded', function() {
+    const productGallery = document.getElementById('product-gallery');
 
-            // Tablica obiektów zawierających ścieżki obrazków i odnośniki
-            const imageLinks = [
-                {
-                    imageUrl: './images/samochód1.jpg',
-                    linkUrl: 'menu.php'
-                },
-                {
-                    imageUrl: './images/samochód2.jfif',
-                    linkUrl: 'link_do_strony_2'
-                },
-                {
-                    imageUrl: './images/samochód3.jfif',
-                    linkUrl: 'link_do_strony_3'
-                }
-                // Dodaj więcej obiektów dla dodatkowych obrazków
-            ];
+    // Tablica obiektów zawierających ścieżki obrazków i odnośniki
+    const imageLinks = [
+        {
+            imageUrl: './images/samochód1.jpg',
+            linkUrl: 'produkt.php',
+            caption: '30 000$ ~ 50 000$'
+        },
+        {
+            imageUrl: './images/samochód2.jfif',
+            linkUrl: 'link_do_strony_2',
+            caption: 'Opis samochodu 2'
+        },
+        {
+            imageUrl: './images/samochód3.jfif',
+            linkUrl: 'link_do_strony_3',
+            caption: 'Opis samochodu 3'
+        },
+        {
+            imageUrl: './images/samochód1.jpg',
+            linkUrl: 'menu.php',
+            caption: '30 000$ ~ 50 000$'
+        },
+        {
+            imageUrl: './images/samochód2.jfif',
+            linkUrl: 'link_do_strony_2',
+            caption: 'Opis samochodu 2'
+        },
+        {
+            imageUrl: './images/samochód3.jfif',
+            linkUrl: 'link_do_strony_3',
+            caption: 'Opis samochodu 3'
+        }
+        // Dodaj więcej obiektów dla dodatkowych obrazków
+    ];
 
-            // Generowanie elementów dla każdego obrazka z odnośnikiem
-            imageLinks.forEach(imageInfo => {
-                const a = document.createElement('a');
-                a.href = imageInfo.linkUrl;
-                a.target = '_blank'; // Otwórz w nowej karcie
-                const img = document.createElement('img');
-                img.src = imageInfo.imageUrl;
-                img.alt = 'Produkt';
-                img.classList.add('product-image');
-                a.appendChild(img); // Dodaj obrazek do odnośnika
-                productGallery.appendChild(a); // Dodaj odnośnik do galerii
-            });
-        });
+    // Generowanie elementów dla każdego obrazka z odnośnikiem
+    imageLinks.forEach(imageInfo => {
+        const a = document.createElement('a');
+        a.href = imageInfo.linkUrl;
+        a.target = '_blank'; // Otwórz w nowej karcie
+
+        const div = document.createElement('div');
+
+        const img = document.createElement('img');
+        img.src = imageInfo.imageUrl;
+        img.alt = 'Produkt';
+        img.classList.add('product-image');
+
+        const caption = document.createElement('p');
+        caption.textContent = imageInfo.caption;
+        caption.style.textAlign = 'center'; // Wyśrodkuj tekst
+        caption.style.marginTop = '10px'; // Dodaj odstęp od obrazka
+
+        div.appendChild(img); // Dodaj obrazek do div
+        div.appendChild(caption); // Dodaj ustalony tekst do div
+
+        a.appendChild(div); // Dodaj div do odnośnika
+        productGallery.appendChild(a); // Dodaj odnośnik do galerii
+    });
+});
+
     </script>
 </body>
 </html>

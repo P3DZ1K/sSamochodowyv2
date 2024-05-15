@@ -49,6 +49,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            cursor: pointer; /* Make the cursor change to indicate clickable element */
         }
 
         .product-image:hover {
@@ -59,95 +60,49 @@
             color: inherit;
             transition: transform 0.3s ease;
         }
-        a:hover{
+        a:hover {
             transform: scale(1.05);
         }
-
-
-       
-
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="menu.php" style="text-decoration: none;"><span>X</span></a>
-
         <header>
             <h1>Exclusivity, Innovation, Exceptional performance</h1>
         </header>
 
         <main>
             <section id="product-gallery">
-                <!-- Tutaj będzie galeria zdjęć produktów -->
+                <?php
+                // Include database connection
+                require_once "connect.php";
+                
+                // Establish connection to the database
+                $connection = mysqli_connect($host, $db_user, $db_password, $db_name);
+                
+                // Check if connection is successful
+                if (!$connection) {
+                    die("Błąd połączenia z bazą danych: " . mysqli_connect_error());
+                }
+
+                // Query to retrieve image data
+                $result = mysqli_query($connection, "SELECT zdjecie_dane_samochodu FROM dane_samochodu ORDER BY id_dane_samochodu DESC"); 
+                
+                // Loop through each image data
+                while ($data = mysqli_fetch_assoc($result)): ?>
+                    <div class="col-sm-3 category">
+                        <!-- Link to product.php with image as parameter -->
+                        <a href="produkt.php?image=<?php echo $data['zdjecie_dane_samochodu']; ?>">
+                            <img class="product-image" src="<?php echo $data['zdjecie_dane_samochodu']; ?>" alt="Car Image">
+                        </a>
+                    </div>
+                <?php endwhile;
+
+                // Close database connection
+                mysqli_close($connection);
+                ?>
             </section>
         </main>
     </div>
-
-    <script>
-       document.addEventListener('DOMContentLoaded', function() {
-    const productGallery = document.getElementById('product-gallery');
-
-    // Tablica obiektów zawierających ścieżki obrazków i odnośniki
-    const imageLinks = [
-        {
-            imageUrl: './images/samochód1.jpg',
-            linkUrl: 'produkt.php',
-            caption: '30 000$ ~ 50 000$'
-        },
-        {
-            imageUrl: './images/samochód2.jfif',
-            linkUrl: 'link_do_strony_2',
-            caption: 'Opis samochodu 2'
-        },
-        {
-            imageUrl: './images/samochód3.jfif',
-            linkUrl: 'link_do_strony_3',
-            caption: 'Opis samochodu 3'
-        },
-        {
-            imageUrl: './images/samochód1.jpg',
-            linkUrl: 'menu.php',
-            caption: '30 000$ ~ 50 000$'
-        },
-        {
-            imageUrl: './images/samochód2.jfif',
-            linkUrl: 'link_do_strony_2',
-            caption: 'Opis samochodu 2'
-        },
-        {
-            imageUrl: './images/samochód3.jfif',
-            linkUrl: 'link_do_strony_3',
-            caption: 'Opis samochodu 3'
-        }
-        // Dodaj więcej obiektów dla dodatkowych obrazków
-    ];
-
-    // Generowanie elementów dla każdego obrazka z odnośnikiem
-    imageLinks.forEach(imageInfo => {
-        const a = document.createElement('a');
-        a.href = imageInfo.linkUrl;
-        a.target = '_blank'; // Otwórz w nowej karcie
-
-        const div = document.createElement('div');
-
-        const img = document.createElement('img');
-        img.src = imageInfo.imageUrl;
-        img.alt = 'Produkt';
-        img.classList.add('product-image');
-
-        const caption = document.createElement('p');
-        caption.textContent = imageInfo.caption;
-        caption.style.textAlign = 'center'; // Wyśrodkuj tekst
-        caption.style.marginTop = '10px'; // Dodaj odstęp od obrazka
-
-        div.appendChild(img); // Dodaj obrazek do div
-        div.appendChild(caption); // Dodaj ustalony tekst do div
-
-        a.appendChild(div); // Dodaj div do odnośnika
-        productGallery.appendChild(a); // Dodaj odnośnik do galerii
-    });
-});
-
-    </script>
 </body>
 </html>

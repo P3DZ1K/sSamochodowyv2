@@ -200,7 +200,7 @@
   
   <thead>
     <tr>
-    <th>Imię</th> <th>Nazwisko</th> <th>Miasto</th> <th>Telefon</th> <th>email</th> <th>Edit</th>
+    <th>Imię</th>  <th>Miasto</th> <th>Telefon</th> <th>Edit</th>
     </tr>
   </thead>
 
@@ -223,7 +223,7 @@ if (!$polaczenie) {
 
 
 // Przykładowe zapytanie SQLtutaajjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj
-$sql = "SELECT id_klienta, imie_klienta, nazwisko_klienta, miasto_klienta, telefon_klienta, email_klienta FROM klienci where imie_klienta = '$prof'  ";
+$sql = "SELECT id_klienta, imie_klienta, miasto_klienta, telefon_klienta FROM klienci where imie_klienta = '$prof'  ";
 
 // Wykonanie zapytania
 $wynik = mysqli_query($polaczenie, $sql);
@@ -238,7 +238,7 @@ $idd=0;
 while ($_row = mysqli_fetch_assoc($wynik)) {
     // Tutaj możesz wykonywać operacje na danych, na przykład:
     $idd++;
-    echo "<tr><td> ". $_row['imie_klienta'] . "</td><td>" . $_row['nazwisko_klienta'] ."</td><td>". $_row["miasto_klienta"]."</td><td>" . $_row['telefon_klienta'] . "</td><td>" . $_row['email_klienta'] . "</td><td>"."<img src='./images/pencil.png' id='showFormButton'>"."</td></tr>";
+    echo "<tr><td> ". $_row['imie_klienta'] . "</td><td>". $_row["miasto_klienta"]."</td><td>" . $_row['telefon_klienta'] . "</td><td>"."<img src='./images/pencil.png' id='showFormButton'>"."</td></tr>";
 }
 // Zamknięcie połączenia
 mysqli_close($polaczenie);
@@ -256,7 +256,7 @@ $prof = $_SESSION['imie_klienta'];
 include 'connect.php';
 $baza = mysqli_connect($host, $db_user, $db_password, $db_name) or ('cos nie tak z polaczenie z BD');
 
-$zapytanie="SELECT imie_klienta, nazwisko_klienta, miasto_klienta, telefon_klienta, email_klienta, zdjecie_klienta FROM klienci WHERE `imie_klienta`= '$prof'";
+$zapytanie="SELECT imie_klienta, miasto_klienta, telefon_klienta, zdjecie_klienta FROM klienci WHERE `imie_klienta`= '$prof'";
 $result = $baza->query($zapytanie) or die ('bledne zapytanie');
 
 while($wiersz = $result->fetch_assoc())
@@ -268,10 +268,8 @@ while($wiersz = $result->fetch_assoc())
         <h4>Edycja klienta</h4>
 <form method="POST" action="groupDateKlient.php" id="Back">
 Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off" style="margin-left:80px;">
-<br><br>Nazwisko: <input value="<?php echo $wiersz['nazwisko_klienta']; ?>" type="text" name="f_nazwisko" autocomplete="off" style="margin-left:42px;">
 <br><br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>"type="text" name="f_miasto" autocomplete="off" style="margin-left:30px;">
 <br><br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>"type="text" name="f_telefon" autocomplete="off" style="margin-left:60px;">
-<br><br>Email: <input value="<?php echo $wiersz['email_klienta']; ?>"type="text" name="f_email" autocomplete="off" style="margin-left:72px;">
 <br><br>Awatar: <input value="<?php echo $wiersz['zdjecie_klienta']; ?>"type="number" min="1" max="3" name="f_zdjecie" autocomplete="off" style="margin-left:62px;width:163px; text-align: center;">
 <br><br><button type="submit" id="BUTTON"> ZAPISZ ZMIANY </button>
 </form>

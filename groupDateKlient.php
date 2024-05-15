@@ -20,10 +20,8 @@ body{
 </html>
 <?PHP
  $f_imie = $_POST["f_imie"];
- $f_nazwisko = $_POST["f_nazwisko"];
  $f_miasto = $_POST["f_miasto"];
  $f_telefon = $_POST["f_telefon"];
- $f_email = $_POST["f_email"];
  $f_zdjecie = $_POST["f_zdjecie"];
 
 
@@ -31,8 +29,8 @@ body{
     include 'connect.php';
     $baza = mysqli_connect($host,$db_user,$db_password,$db_name) or ('cos nie tak z polaczenie z BD');
 
-    $zapytanie="UPDATE `klienci` SET `imie_klienta` = '$f_imie', `nazwisko_klienta` = '$f_nazwisko',
-     `miasto_klienta` = '$f_miasto', `telefon_klienta` = '$f_telefon', `email_klienta` = '$f_email',
+    $zapytanie="UPDATE `klienci` SET `imie_klienta` = '$f_imie',
+     `miasto_klienta` = '$f_miasto', `telefon_klienta` = '$f_telefon',
       `zdjecie_klienta` = '$f_zdjecie' WHERE `imie_klienta` = '$f_imie';";
     $result = $baza->query($zapytanie) or die ('bledne zapytanie');
 

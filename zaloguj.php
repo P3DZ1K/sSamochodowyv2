@@ -20,10 +20,12 @@
 	{
 		$login = $_POST['imie_klienta'];
 		$haslo = $_POST['haslo_klienta'];
+		//$haslo = md5($haslo."qwertyqwerty")//dadadadadadad
 		
 		$login = htmlentities($login, ENT_QUOTES, "UTF-8");
 		$haslo = htmlentities($haslo, ENT_QUOTES, "UTF-8");
-	
+		$haslo = md5($haslo."gjfvjhgyf576547");
+
 		if ($rezultat = @$polaczenie->query(
 		sprintf("SELECT * FROM klienci WHERE imie_klienta='%s' AND haslo_klienta='%s'",
 		mysqli_real_escape_string($polaczenie,$login),

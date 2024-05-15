@@ -1,3 +1,14 @@
+<?php
+    require_once "connect.php";
+	session_start();
+	
+	if (!isset($_SESSION['zalogowany']))
+	{
+		header('Location: index.php');
+		exit();
+	}
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -51,14 +62,6 @@
             position: relative;
             text-align: center;
         }
-
-        .gallery-image {
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ccc;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
         .navigation {
             position: absolute;
             top: 50%;
@@ -89,48 +92,155 @@
        .rightside{
         
        }
+       img{
+             width:100%;
+       }
+       .dodajdokoszyka{
+            float:left;
+            padding:right:10px;
+       }
+       .blue-button {
+        display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #89d2e1;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin:10px;
+}
+        .blue-button:hover{
+            background-color: #0056b3;
+    border-color: #0056b3;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Nazwa Twojego Produktu</h1>
+<?php
+    if (isset($_GET['image'])) {
+        // Pobierz wartość 'image' z parametru GET
+        $img = $_GET['image'];
 
-    <div class="gallery-container">
-    <div class="gallery">
-        <img src="./images/samochód1.jpg" alt="Zdjęcie 1" class="gallery-image">
-        <div class="navigation">
-            <button class="prev-btn" onclick="
-                const galleryImage = document.querySelector('.gallery-image');
-                const imagePaths = ['./images/samochód1.jpg'];
-                let currentImageIndex = imagePaths.indexOf(galleryImage.src);
-                currentImageIndex = (currentImageIndex - 1 + imagePaths.length) % imagePaths.length;
-                galleryImage.src = imagePaths[currentImageIndex];
-            ">&lt;</button>
-            <button class="next-btn" onclick="
-                const galleryImage = document.querySelector('.gallery-image');
-                const imagePaths = ['./images/samochód1.1.jpg'];
-                let currentImageIndex = imagePaths.indexOf(galleryImage.src);
-                currentImageIndex = (currentImageIndex + 1) % imagePaths.length;
-                galleryImage.src = imagePaths[currentImageIndex];
-            ">&gt;</button>
+        // Wyświetl obrazek samochodu
+       ?>
+        <div class="gallery-container">
+        <div class="gallery">
+           <img src=" <?php echo "$img" ?>" ;
+            </div>
         </div>
-    </div>
+
+<?php
+    } else {
+        // Jeśli parametr 'image' nie został przekazany, wyświetl komunikat
+        echo 'Nieprawidłowy parametr URL.';
+    }
+   ?>
 </div>
 <div class="rightside">
-<h2>Cena: 100,00 zł</h2> 
-<p>To jest opis Twojego produktu. Możesz tutaj opisać jego cechy, zalety,
- funkcje i inne istotne informacje. Pamiętaj, aby podać także ceny i szczegóły dotyczące zakupu.</p>
+
+
+<?php
+    require_once "connect.php";
+
+    // Połączenie z bazą danych
+    $polaczenie = mysqli_connect($host, $db_user, $db_password, $db_name);
+    
+    // Sprawdzenie połączenia
+    if (!$polaczenie) {
+        die("Błąd połączenia z bazą danych: " . mysqli_connect_error());
+    }
+    
+
+
+    //
+    // Tutaj możesz wykonywać operacje na bazie danych
+   $prof = $_SESSION['imie_klienta'];
+   $sql1 ="SELECT samochody.cena_samochodu FROM samochody JOIN dane_samochodu ON dane_samochodu.id_dane_samochodu = samochody.id_dane_samochodu WHERE dane_samochodu.zdjecie_dane_samochodu = '$img'";
+   $sql2 ="SELECT `opis_dane_samochodu` FROM `dane_samochodu` WHERE `zdjecie_dane_samochodu` = '$img'";
+   $sql3 ="SELECT samochody.model_samochodu FROM samochody JOIN dane_samochodu ON dane_samochodu.id_dane_samochodu = samochody.id_dane_samochodu WHERE dane_samochodu.zdjecie_dane_samochodu = '$img'";
+   $sql4 ="SELECT samochody.typ_nadwozia_samochodu FROM samochody JOIN dane_samochodu ON dane_samochodu.id_dane_samochodu = samochody.id_dane_samochodu WHERE dane_samochodu.zdjecie_dane_samochodu = '$img'";
+   $sql5 ="SELECT `kolor_dane_samochodu` FROM `dane_samochodu` WHERE `zdjecie_dane_samochodu` = '$img'"; 
+
+
+   $wynik = mysqli_query($polaczenie, $sql1);
+   $wynik2 = mysqli_query($polaczenie, $sql2);
+   $wynik3 = mysqli_query($polaczenie, $sql3);
+   $wynik4 = mysqli_query($polaczenie, $sql4);
+   $wynik5 = mysqli_query($polaczenie, $sql5);
+  
+
+   // Sprawdzenie, czy zapytanie zostało wykonane poprawnie
+   if (!$wynik) {
+       die("Błąd zapytania SQL: " . mysqli_error($polaczenie));
+   }
+   
+   // Przetwarzanie wyników zapytania
+   while ($_row = mysqli_fetch_assoc($wynik)) {
+    $cena = $_row['cena_samochodu'];
+    echo "<h2>Cena: ".$cena." zł</h2>";
+   }
+   while ($_row = mysqli_fetch_assoc($wynik2)) {
+    $opis = $_row['opis_dane_samochodu'];
+    echo "<p1>Opis:".$opis."</p1>";
+   }
+   
+   
+   
+?>
+
 </div>
 <div class="bottomside">
+
     <p>
-        <strong>Dostępność:</strong> W magazynie<br>
-        <strong>Kolor:</strong> Czarny<br>
-        <strong>Rozmiar:</strong> M, L, XL
+        <strong>Kolor:</strong> 
+        <?php
+        while ($_row = mysqli_fetch_assoc($wynik5)) {
+            $kolor = $_row['kolor_dane_samochodu'];
+            echo "<p1>".$kolor."</p1>";
+           }
+        ?>
+        <br>
+        <strong>Model:</strong>
+        <?php
+        while ($_row = mysqli_fetch_assoc($wynik3)) {
+            $model = $_row['model_samochodu'];
+            echo "<p1>".$model."</p1>";
+           }
+        ?>
+        <br>
+        <strong>Typ nadwodzia:</strong>
+        <?php
+        while ($_row = mysqli_fetch_assoc($wynik4)) {
+             $typ_nadwozia = $_row['typ_nadwozia_samochodu'];
+             echo "<p1>".$typ_nadwozia."</p1>";
+             }?>
+        <br>
     </p>
 </div>
-    <button>Dodaj do koszyka</button>
+         <div class="dodajdokoszyka">    
+    <form action="" method="POST">
+        <button class="blue-button">Dodaj do koszyka</button>
+    </form>
+            </div>
+            <div class="anuluj">
+    <form action="shop.php" method="POST">
+        <button class="blue-button">Anuluj</button>
+    </form>
+            </div>
 </div>
 
+
+<?php
+    mysqli_close($polaczenie);
+  ?>
 </body>
 </html>

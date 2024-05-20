@@ -63,15 +63,56 @@
         a:hover {
             transform: scale(1.05);
         }
+        .logo {
+            color: #fff;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-left:20px;
+        }
+        .header-left{
+            float: left;
+            width: 20%
+        }
+        .header-right{
+            float: right;
+            text-align: right;
+            width: 80%;
+        }
+        button{
+            background-color: #89d2e1;
+            border-color: white;
+            border-radius: 10px;
+            border-width: 3px;
+        }
+        button:hover{
+            background-color:  #ADD8E6;
+        }
+        
+        
     </style>
 </head>
 <body>
+    <div class="header-left">
+        <a href="menu.php"><h2 class="logo" style ="font-size:40px;">BMW</h2></a>
+        
+    </div>
+    <div class="header-right" id="menu">
+        <div class="col-md-2">
+            
+            <div role="group">
+                <button class="menu" mup="koszyk.php" style="margin:8px;"><img src="./images/koszyk.png" style="max-width:70px; width:100%; padding:15px;"></button>
+                <button class="menu" mup="shopshop.php" style="margin:8px;"><img src="./images/sklep.png" style="max-width:70px; width:100%; padding:15px;"></button>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
     <div class="container">
         <header>
             <h1>Exclusivity, Innovation, Exceptional performance</h1>
         </header>
 
         <main>
+            <div class="col-md-10" id="strona">
             <section id="product-gallery">
                 <?php
                 // Include database connection
@@ -102,7 +143,13 @@
                 mysqli_close($connection);
                 ?>
             </section>
+            </div>
         </main>
     </div>
+
+    <script src="./js/jq.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>
+

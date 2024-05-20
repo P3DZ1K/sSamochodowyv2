@@ -76,17 +76,17 @@
         height: 100px;
       }
   .table td, table th{
-    font-size:10px;
+    font-size:25px;
   }
 }
 @media (max-width: 720px){
   .table td, table th{
-    font-size:7px;
+    font-size:20px;
   }
 }
 @media (max-width: 540px){
   .table td, table th{
-    font-size:5px;
+    font-size:10px;
   }
 }
 .form-overlay {
@@ -147,14 +147,23 @@
             margin-left: 128px;
 
     }
+    .logo
+        {
+            
+         color: #fff;
+         text-transform: uppercase;
+         cursor: pointer;
+         margin-left:20px;
+        }
+        a{
+          text-decoration: none;
+        }
   </style>
 </head>
 <body>
-
+<a href="menu.php"><h2 class="logo" style="">BMW</h2></a>
 <div class="rwd-table">
 <div class="container">
-<a href="menu.php" style="text-decoration: none;"><span>X</span></a>
-
   <?php
     require_once "connect.php";
 

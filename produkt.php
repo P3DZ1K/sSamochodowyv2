@@ -43,13 +43,7 @@
             line-height: 1.6;
         }
         
-        .product-image {
-            width: 40%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+        
         .gallery-container {
             width: 40%;
             max-width: 800px;
@@ -57,11 +51,10 @@
             padding:20px;
             
         }
-
-        .gallery {
-            position: relative;
-            text-align: center;
-        }
+        img{
+             width:100%;
+       }
+        
         .navigation {
             position: absolute;
             top: 50%;
@@ -91,9 +84,6 @@
         }
        .rightside{
         
-       }
-       img{
-             width:100%;
        }
        .dodajdokoszyka{
             float:left;

@@ -1,3 +1,6 @@
+<header>
+            <h1>Exclusivity, Innovation, Exceptional performance</h1>
+        </header>
 <section id="product-gallery">
                 <?php
                 // Include database connection

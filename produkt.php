@@ -222,7 +222,7 @@
     </form>
             </div>
             <div class="anuluj">
-    <form action="shop.php" method="POST">
+    <form action="strefaklienta.php" method="POST">
         <button class="blue-button">Anuluj</button>
     </form>
             </div>

@@ -41,7 +41,7 @@ body{
     // Funkcja do automatycznego przekierowania po załadowaniu strony
     window.onload = function() {
         setTimeout(function() {
-            var redirectUrl = "profil.php"; // Ustaw adres URL docelowy
+            var redirectUrl = "strefaklienta.php"; // Ustaw adres URL docelowy
             window.location.href = redirectUrl; // Przekieruj na podany URL
         }, 2500); // Przekierowanie po 2 sekundach (2000 milisekund)
     };

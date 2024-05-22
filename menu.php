@@ -301,7 +301,7 @@ header .logo
       <p>The BMW XD surprises with its blend of elegance and reliability. The collaboration between the legendary BMW brand
          and the renowned off-road vehicle manufacturer brings an innovative vehicle that conquers both the city and off-road terrain.
           The new model combines the distinctive BMW style with the reliability and versatility of Jeep.</p>
-      <a href="#">Explore</a>
+          <a href="http://localhost/Ssamochodowy/sSamochodowy/sSamochodowyv2/produkt.php?image=./images/samoch%C3%B3d4.jfif">Zobacz Produkt</a>
     </div>
     <ul class="social">
       <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a></li>
@@ -327,10 +327,9 @@ header .logo
 
 
     <ul>
-      <li><a href="menu.php">Home</a></li>
-      <li><a href="profil.php">Profile</a></li>
-      <li><a href="shop.php">Shop</a></li>
-      <li><a href="contact.php">Contact</a></li>
+     <br><br>
+      <li><a href="strefaklienta.php">Strefa klienta</a></li>
+      <br>
       <li><?php
     echo '<a href="logout.php" style="text-decoration: none;">Wyloguj się!</a>';
     ?></li>

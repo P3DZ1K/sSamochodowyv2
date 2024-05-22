@@ -102,17 +102,17 @@
             <div role="group">
                 <button class="menu" mup="koszyk.php" style="margin:8px;"><img src="./images/koszyk.png" style="max-width:70px; width:100%; padding:15px;"></button>
                 <button class="menu" mup="shopshop.php" style="margin:8px;"><img src="./images/sklep.png" style="max-width:70px; width:100%; padding:15px;"></button>
+                <button class="menu" mup="profil.php" style="margin:8px;"><img src="./images/avatar3.png" style="max-width:70px; width:100%; padding:15px;"></button>
             </div>
         </div>
     </div>
     <div style="clear: both"></div>
     <div class="container">
-        <header>
-            <h1>Exclusivity, Innovation, Exceptional performance</h1>
-        </header>
-
         <main>
             <div class="col-md-10" id="strona">
+            <header>
+            <h1>Exclusivity, Innovation, Exceptional performance</h1>
+            </header>
             <section id="product-gallery">
                 <?php
                 // Include database connection

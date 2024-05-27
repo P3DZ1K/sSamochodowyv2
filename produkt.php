@@ -217,7 +217,7 @@
     </p>
 </div>
          <div class="dodajdokoszyka">    
-    <form action="" method="POST">
+    <form action="towaradd.php" method="POST">
         <button class="blue-button">Dodaj do koszyka</button>
     </form>
             </div>

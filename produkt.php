@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nazwa Twojego Produktu</title>
+    <link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
     <style>
        
         body {
@@ -180,7 +180,7 @@
    }
    while ($_row = mysqli_fetch_assoc($wynik2)) {
     $opis = $_row['opis_dane_samochodu'];
-    echo "<p1>Opis:".$opis."</p1>";
+    echo "<p1>".$opis."</p1>";
    }
    
    
@@ -206,6 +206,9 @@
             echo "<p1>".$model."</p1>";
            }
         ?>
+          <title>
+        <?php echo "BMW model ".$model; ?>
+        </title>
         <br>
         <strong>Typ nadwodzia:</strong>
         <?php
@@ -218,6 +221,7 @@
 </div>
          <div class="dodajdokoszyka">    
     <form action="towaradd.php" method="POST">
+    <input type="hidden" name="image" value="<?php echo htmlspecialchars($img); ?>">
         <button class="blue-button">Dodaj do koszyka</button>
     </form>
             </div>

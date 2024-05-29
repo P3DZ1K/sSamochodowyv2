@@ -15,7 +15,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Osadnicy - gra przeglądarkowa</title>
+	<title>BMW</title>
+	<link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
 	<link rel="stylesheet" href="./css/logowanie.css">
 </head>
 

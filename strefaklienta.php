@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa z znacznikiem - Oświęcim</title>
+    <title>Strefa klienta</title>
+    <link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
     <style>
         /* Resetowanie stylów */
         body, html {

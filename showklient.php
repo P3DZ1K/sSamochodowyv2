@@ -1,1 +1,0 @@
-admin widzi klientów

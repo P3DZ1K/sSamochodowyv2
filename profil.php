@@ -14,7 +14,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moja Strona Profilowa</title>
   <script src="./js/bootstrap.min.js"></script>
   <style>
     body {
@@ -232,7 +231,7 @@ while ($wiersz = $result->fetch_assoc()) {
     <div id="formContainer">
         <span id="closeButton">X</span>
         <h4>Edycja klienta</h4>
-        <form method="POST" action="groupDateKlient.php" id="Back">
+        <form method="POST" action="editklient.php" id="Back">
             Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off" style="margin-left:80px;">
             <br><br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>" type="text" name="f_miasto" autocomplete="off" style="margin-left:30px;">
             <br><br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>" type="text" name="f_telefon" autocomplete="off" style="margin-left:60px;">

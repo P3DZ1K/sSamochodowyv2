@@ -16,7 +16,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<title>Pierwszy projekt bazy danych -sklep-</title>
+	<title>Menu-</title>
+  <link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <!--<link rel="stylesheet" href="./css/menu.css">-->
 	<script src="./js/bootstrap.min.js"></script>

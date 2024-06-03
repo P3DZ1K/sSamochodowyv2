@@ -15,131 +15,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="./js/bootstrap.min.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #89d2e1;
-    }
-
-    
-
-    .profile-picture {
-      width: 20%;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      display: block;
-      background-color: #ccc;
-    }
-
-    
-    @media (max-width: 1020px) {
-      /* Dla urządzeń o szerokości do 600px */
-      .container {
-        padding: 10px;
-      }
-      .profile-picture {
-        width: 100px;
-        height: 100px;
-      }
-  
-}
-table {
-        width: 30%;
-        border-collapse: collapse;
-        border: 2px solid #ddd;
-    }
-
-    th, td {
-        padding: 18px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    th {
-        background-color: #f2f2f2;
-    }
-
-    /* Stylizacja nagłówka */
-    th:first-child, td:first-child {
-        border-left: none;
-    }
-
-    th:last-child, td:last-child {
-        border-right: none;
-    }
-
-.form-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: none;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #formContainer {
-        width: 60%px;
-        background-color: #f0f0f0;
-        border: 2px solid #ccc;
-        padding: 20px;
-        border-radius: 10px;
-        position: relative;
-    }
-
-    #closeButton {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        cursor: pointer;
-    }
-    #showFormButton{
-      width:85%;
-    }
-    #showFormButton:hover{
-      transform: rotate(45deg);
-    }
-    
-    .jednosc{
-      display:flex;
-      justify-content: center;
-      justify-content: space-around;
-      flex-direction: row-reverse;
-    }
-    #BUTTONN{
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            background-color: #00a1e0;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-left:40px;
-            display: flex;
-            margin-left: 128px;
-
-    }
-    .logo
-        {
-            
-         color: #fff;
-         text-transform: uppercase;
-         cursor: pointer;
-         margin-left:20px;
-        }
-        a{
-          text-decoration: none;
-        }
-  </style>
+  <link rel="stylesheet" type="text/css" href="./css/profil.css">
 </head>
 <body>
 <a href="menu.php"><h2 class="logo" style="">BMW</h2></a>
@@ -175,14 +51,14 @@ table {
 
     mysqli_close($polaczenie);
     ?>
-    <h1 style="color:red;text-align:center;font-size:auto;">Witaj <?php echo $_SESSION['imie_klienta']; ?></h1>
+    <h1 style="color:red;text-align:center;font-size:auto;">Hi <?php echo $_SESSION['imie_klienta']; ?></h1>
     <div class="jednosc">
         <table class="table table-condensed">
             <thead>
                 <tr>
-                    <th>Imię</th>
-                    <th>Miasto</th>
-                    <th>Telefon</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Phone</th>
                     <th>Edit</th>
                 </tr>
             </thead>
@@ -230,13 +106,13 @@ while ($wiersz = $result->fetch_assoc()) {
 <div class="form-overlay" id="formOverlay">
     <div id="formContainer">
         <span id="closeButton">X</span>
-        <h4>Edycja klienta</h4>
+        <h4>Client edit</h4>
         <form method="POST" action="editklient.php" id="Back">
-            Imię: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off" style="margin-left:80px;">
-            <br><br>Adres firmy: <input value="<?php echo $wiersz['miasto_klienta']; ?>" type="text" name="f_miasto" autocomplete="off" style="margin-left:30px;">
-            <br><br>Telefon: <input value="<?php echo $wiersz['telefon_klienta']; ?>" type="text" name="f_telefon" autocomplete="off" style="margin-left:60px;">
-            <br><br>Awatar: <input value="<?php echo $wiersz['zdjecie_klienta']; ?>" type="number" min="1" max="3" name="f_zdjecie" autocomplete="off" style="margin-left:62px;width:163px; text-align: center;">
-            <br><br><button type="submit" id="BUTTONN">ZAPISZ ZMIANY</button>
+            Name: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off" style="margin-left:80px;">
+            <br><br>City: <input value="<?php echo $wiersz['miasto_klienta']; ?>" type="text" name="f_miasto" autocomplete="off" style="margin-left:30px;">
+            <br><br>Phone: <input value="<?php echo $wiersz['telefon_klienta']; ?>" type="text" name="f_telefon" autocomplete="off" style="margin-left:60px;">
+            <br><br>Avatar: <input value="<?php echo $wiersz['zdjecie_klienta']; ?>" type="number" min="1" max="3" name="f_zdjecie" autocomplete="off" style="margin-left:62px;width:163px; text-align: center;">
+            <br><br><button type="submit" id="BUTTONN">SAVE</button>
         </form>
     </div>
 </div>

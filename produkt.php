@@ -15,106 +15,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
-    <style>
-       
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #89d2e1;
-            color: #333;
-        }
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            
-        }
-        h1 {
-            font-size: 32px;
-            color: #333;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        
-        
-        .gallery-container {
-            width: 40%;
-            max-width: 800px;
-            float:left;
-            padding:20px;
-            
-        }
-        img{
-             width:100%;
-       }
-        
-        .navigation {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .prev-btn,
-        .next-btn {
-            font-size: 24px;
-            padding: 10px 20px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .prev-btn:hover,
-        .next-btn:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-        .bottomside{
-            clear: both;
-        }
-       .rightside{
-        
-       }
-       .dodajdokoszyka{
-            float:left;
-            padding:right:10px;
-       }
-       .blue-button {
-        display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #89d2e1;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin:10px;
-}
-        .blue-button:hover{
-            background-color: #0056b3;
-    border-color: #0056b3;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/produkt.css">
 </head>
 <body>
 
 <div class="container">
-    <h1>Nazwa Twojego Produktu</h1>
+    <h1>BMW</h1>
 <?php
     if (isset($_GET['image'])) {
         // Pobierz wartość 'image' z parametru GET
@@ -176,7 +82,7 @@
    // Przetwarzanie wyników zapytania
    while ($_row = mysqli_fetch_assoc($wynik)) {
     $cena = $_row['cena_samochodu'];
-    echo "<h2>Cena: ".$cena." zł</h2>";
+    echo "<h2>Price: ".$cena." zł</h2>";
    }
    while ($_row = mysqli_fetch_assoc($wynik2)) {
     $opis = $_row['opis_dane_samochodu'];

@@ -33,30 +33,8 @@ $result = $baza->query($zapytanie) or die(mysqli_error($baza));
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Lista Transakcji</title>
-    <style>
-        /* Stylizacja tabeli */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 2px solid #ddd;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        /* Stylizacja nagłówka */
-        th:first-child, td:first-child {
-            border-left: none;
-        }
-        th:last-child, td:last-child {
-            border-right: none;
-        }
-    </style>
+    <title>Transaction List</title>
+    <link rel="stylesheet" type="text/css" href="./css/koszyk.css">
 </head>
 <body>
 
@@ -64,10 +42,10 @@ $result = $baza->query($zapytanie) or die(mysqli_error($baza));
     <thead>
         <tr>
             <th>Lp.</th>
-            <th>Imię</th>
-            <th>Samochód</th>
-            <th>Data</th>
-            <th>Usuń</th>
+            <th>name</th>
+            <th>Car</th>
+            <th>Date</th>
+            <th>Remove</th>
         </tr>
     </thead>
     <tbody>

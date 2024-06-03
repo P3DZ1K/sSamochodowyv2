@@ -1,15 +1,3 @@
-<link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
-<title>BMW</title>
-<style>
-            /* Resetowanie marginesów dla całej strony */
-body{
- background-image: url(./images/udaloSie.gif);
- background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-
-        </style>
 <?php
 session_start();
 
@@ -33,8 +21,11 @@ if (isset($_GET['nr'])) {
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+<link rel="stylesheet" type="text/css" href="./css/edit.css">
     <meta charset="UTF-8">
     <title>Przekierowanie</title>
+    <link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
+    <title>BMW</title>
     <style>
         /* Resetowanie marginesów dla całej strony */
         body {

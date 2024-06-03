@@ -18,36 +18,7 @@
 	<title>Rejestracja</title>
     <link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
 	<link rel="stylesheet" href="./css/logowanie.css">
-    <style>
-       input[value="Zarejestruj"]{
-        width: auto;
-      padding: 5px 13px;
-      border: 1px solid #005f85;
-      color: white;
-      text-shadow: 0 0 1px black;
-      background: #98c9dc;
-      position: relative;
-      display: flex;
-      left:350px;
-      
-       }
-       .radio{
-        display:flex;
-        justify-content: space-between;
-        margin-left:60px;
-        padding-left:20px;
-        
-       }
-       .awatary img{
-width:80px;
-margin:36px;
-
-
-        
-        
-
-       }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./css/rejestracja.css">
 </head>
 
 <body>

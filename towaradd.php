@@ -1,12 +1,5 @@
 <link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
-<style>
-body{
- background-image: url(./images/udaloSie.gif);
- background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="./css/edit.css">
 <?php
 session_start();
 

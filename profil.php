@@ -108,10 +108,10 @@ while ($wiersz = $result->fetch_assoc()) {
         <span id="closeButton">X</span>
         <h4>Client edit</h4>
         <form method="POST" action="editklient.php" id="Back">
-            Name: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off" style="margin-left:80px;">
-            <br><br>City: <input value="<?php echo $wiersz['miasto_klienta']; ?>" type="text" name="f_miasto" autocomplete="off" style="margin-left:30px;">
-            <br><br>Phone: <input value="<?php echo $wiersz['telefon_klienta']; ?>" type="text" name="f_telefon" autocomplete="off" style="margin-left:60px;">
-            <br><br>Avatar: <input value="<?php echo $wiersz['zdjecie_klienta']; ?>" type="number" min="1" max="3" name="f_zdjecie" autocomplete="off" style="margin-left:62px;width:163px; text-align: center;">
+            Name: <input value="<?php echo $wiersz['imie_klienta']; ?>" type="text" name="f_imie" autocomplete="off" style="margin-left:62px;">
+            <br><br>City: <input value="<?php echo $wiersz['miasto_klienta']; ?>" type="text" name="f_miasto" autocomplete="off" style="margin-left:77px;">
+            <br><br>Phone: <input value="<?php echo $wiersz['telefon_klienta']; ?>" type="text" name="f_telefon" autocomplete="off" style="margin-left:59px;">
+            <br><br>Avatar: <input value="<?php echo $wiersz['zdjecie_klienta']; ?>" type="number" min="1" max="3" name="f_zdjecie" autocomplete="off" style="margin-left:60px;width:163px; text-align: center;">
             <br><br><button type="submit" id="BUTTONN">SAVE</button>
         </form>
     </div>

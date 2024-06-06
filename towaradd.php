@@ -1,5 +1,22 @@
-<link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
-<link rel="stylesheet" type="text/css" href="./css/edit.css">
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW</title>
+    <link rel="icon" href="./images/car.png" sizes="72x72" type="image/png">
+    
+        <style>
+            /* Resetowanie marginesów dla całej strony */
+body{
+ background-image: url(./images/loading.gif);
+ background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+        </style>
+</head>
 <?php
 session_start();
 
